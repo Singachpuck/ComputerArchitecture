@@ -1,0 +1,75 @@
+Turbo Assembler	 Version 3.2	    02/16/21 19:20:52	    Page 1
+LAB1_\hello.asm
+Lab_1
+
+
+      1				     ideal
+      2	0000			     model small
+      3	0000			     stack 256
+      4
+      5	0100			     dataseg
+      6	0000  00		       exCode db 0
+      7	0001  4F 63 68 6B 61 73	20+    message db "Ochkas Dmytro", 10, 13,"Ivanchenko Ksenia", 10, 13, "Kuksiuk	Vladyslav", 10,	13, +
+      8	      44 6D 79 74 72 6F	0A+  '$'
+      9	      0D 49 76 61 6E 63	68+
+     10	      65 6E 6B 6F 20 4B	73+
+     11	      65 6E 69 61 0A 0D	4B+
+     12	      75 6B 73 69 75 6B	20+
+     13	      56 6C 61 64 79 73	6C+
+     14	      61 76 0A 0D 24
+     15	0037  48 65 6C 6C 6F 0A	0D+    message2	db "Hello", 10,	13, '$'
+     16	      24
+     17	003F			     codeseg
+     18	0000			       Start:
+     19	0000  B8 0000s			 mov ax, @data
+     20	0003  8E D8			 mov ds, ax
+     21	0005  8E C0			 mov es, ax
+     22	0007  BA 0001r			 mov dx, offset	message
+     23	000A  BA 0037r			 mov dx, offset	message2
+     24	000D  B8 0009			 mov ax, 9
+     25	0010  CD 21			 int 21h
+     26	0012  BA 0001r			 mov dx, offset	message
+     27	0015  B8 0009			 mov ax, 9
+     28	0018  CD 21			 int 21h
+     29					 ; mov ah, 01h
+     30					 ; int 21h
+     31	001A  B8 004C			 mov ax, 4ch
+     32	001D  A0 0000r			 mov al,[exCode]
+     33	0020  CD 21			 int 21h
+     34				       end Start
+Turbo Assembler	 Version 3.2	    02/16/21 19:20:52	    Page 2
+Symbol Table
+Lab_1
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "02/16/21"
+??FILENAME			  Text	 "hello	  "
+??TIME				  Text	 "19:20:52"
+??VERSION			  Number 0314
+@32BIT				  Text	 0
+@CODE				  Text	 _TEXT
+@CODESIZE			  Text	 0
+@CPU				  Text	 0101H
+@CURSEG				  Text	 _TEXT
+@DATA				  Text	 DGROUP
+@DATASIZE			  Text	 0
+@FILENAME			  Text	 HELLO
+@INTERFACE			  Text	 00H
+@MODEL				  Text	 2
+@STACK				  Text	 DGROUP
+@WORDSIZE			  Text	 2
+EXCODE				  Byte	 DGROUP:0000
+MESSAGE				  Byte	 DGROUP:0001
+MESSAGE2			  Byte	 DGROUP:0037
+START				  Near	 _TEXT:0000
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+DGROUP				  Group
+  STACK				  16  0100 Para	  Stack	  STACK
+  _DATA				  16  003F Word	  Public  DATA
+_TEXT				  16  0022 Word	  Public  CODE
+
