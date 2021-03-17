@@ -37,7 +37,7 @@ array2Db db "#", "#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#" ,"#"
 
 CODESEG
 Start:
-    M_Init
+
     mov al, 02h ;Число, що буде записано до ділянки дампу
     mov bx, 08h ;До ВХ заносимо ефективну адресу потрібної ділянки коду
     mov [bx], al ;До дампу заносимо значення АХ
@@ -46,20 +46,18 @@ Start:
     inc bx
     mov [bx], al ;Записуємо в інші ділянки пам’яті, все це здійснюється циклічно
     inc bx
-    mov [bx], al ;
+    mov [bx], al 
     inc bx
-    mov [bx], al ;
+    mov [bx], al 
     inc bx
-    mov [bx], al ;
+    mov [bx], al 
     inc bx
-    mov [bx], al ;
+    mov [bx], al 
     inc bx
 
     mov bp, 01h ;Етап 1. До ВР заносимо ефективну адресу потрібної ділянки стеку
     mov cx, [bp] ;Етап 2. До СХ заносимо значення з пам’яті за адресою [SS]:[ВР]
 
-;mov ah,4ch
-;int 21h		; виклик функції DOS 4ch
-;end Start
-Exit:
 mov ah,4ch
+int 21h		; виклик функції DOS 4ch
+end Start
