@@ -1,0 +1,12 @@
+@ECHO OFF
+CLS
+TASM lab2.asm
+IF ERRORLEVEL 1 GOTO exit
+
+REM 1 Linking
+TLINK lab2.obj
+IF ERRORLEVEL 1 GOTO exit
+
+lab2.exe
+:exit
+ECHO ON
