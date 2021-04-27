@@ -60,7 +60,6 @@ Sort: ; сортування
         loop l2;перевірка cx
 
     mov si, 0
-    ;inc bx; збільшення значення bx
     pop cx ;діставання значення cx зі стеку
     loop l1;перевірка cx 
     jmp AfterSort
